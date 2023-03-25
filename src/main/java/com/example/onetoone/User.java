@@ -14,14 +14,18 @@ public class User {
     private String email;
     @Column(unique = true)
     private String nif;
+    @OneToOne
+    @JoinColumn(unique = true)
+    private Address address;
 
     public User() {
     }
 
-    public User(String name, String email, String nif) {
+    public User(String name, String email, String nif, Address address) {
         this.name = name;
         this.email = email;
         this.nif = nif;
+        this.address = address;
     }
 
     public Long getId() {
@@ -54,6 +58,14 @@ public class User {
 
     public void setNif(String nif) {
         this.nif = nif;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override

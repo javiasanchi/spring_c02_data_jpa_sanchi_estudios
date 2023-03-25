@@ -13,12 +13,12 @@ public class Address {
     private String localidad;
     private String ciudad;
     private String pais;
-    private String cp;
+    private Integer cp;
 
     public Address() {
     }
 
-    public Address(String calle, String localidad, String ciudad, String pais, String cp) {
+    public Address(String calle, String localidad, String ciudad, String pais, Integer cp) {
         this.calle = calle;
         this.localidad = localidad;
         this.ciudad = ciudad;
@@ -66,11 +66,11 @@ public class Address {
         this.pais = pais;
     }
 
-    public String getCp() {
+    public Integer getCp() {
         return cp;
     }
 
-    public void setCp(String cp) {
+    public void setCp(Integer cp) {
         this.cp = cp;
     }
 
