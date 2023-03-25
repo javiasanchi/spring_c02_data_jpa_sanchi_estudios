@@ -14,6 +14,8 @@ public class User {
     private String email;
     @Column(unique = true)
     private String nif;
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
     @OneToOne
     @JoinColumn(unique = true)
     private Address address;
@@ -21,10 +23,11 @@ public class User {
     public User() {
     }
 
-    public User(String name, String email, String nif, Address address) {
+    public User(String name, String email, String nif,UserType userType, Address address) {
         this.name = name;
         this.email = email;
         this.nif = nif;
+        this.userType = userType;
         this.address = address;
     }
 
@@ -60,6 +63,14 @@ public class User {
         this.nif = nif;
     }
 
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
     public Address getAddress() {
         return address;
     }
@@ -75,6 +86,7 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", nif='" + nif + '\'' +
+                ", userType=" + userType +
                 '}';
     }
 }
