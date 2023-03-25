@@ -16,6 +16,8 @@ public class Vecinos {
     private LocalDate fechanac;
     private String nif;
 
+
+
     public Vecinos() {
     }
 
@@ -25,6 +27,7 @@ public class Vecinos {
         this.puerta = puerta;
         this.fechanac = fechanac;
         this.nif = nif;
+
     }
 
     public Long getId() {
@@ -74,6 +77,8 @@ public class Vecinos {
     public void setNif(String nif) {
         this.nif = nif;
     }
+
+
 
     @Override
     public String toString() {

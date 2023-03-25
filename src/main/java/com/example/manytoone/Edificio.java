@@ -11,14 +11,17 @@ public class Edificio {
     private String nombre;
     private Integer numero;
     private String portero;
+    @ManyToOne
+    private Vecinos vecinos;
 
     public Edificio() {
     }
 
-    public Edificio(String nombre, Integer numero, String portero) {
+    public Edificio(String nombre, Integer numero, String portero, Vecinos vecinos) {
         this.nombre = nombre;
         this.numero = numero;
         this.portero = portero;
+        this.vecinos = vecinos;
     }
 
     public Long getId() {
@@ -54,6 +57,15 @@ public class Edificio {
 
     public Edificio setPortero(String portero) {
         this.portero = portero;
+        return this;
+    }
+
+    public Vecinos getVecinos() {
+        return vecinos;
+    }
+
+    public Edificio setVecinos(Vecinos vecinos) {
+        this.vecinos = vecinos;
         return this;
     }
 
