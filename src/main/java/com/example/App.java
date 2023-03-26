@@ -4,6 +4,10 @@ import com.example.manytoone.Edificio;
 import com.example.manytoone.EdificioRepository;
 import com.example.manytoone.Vecinos;
 import com.example.manytoone.VecinosRepository;
+import com.example.onetomany.Cars;
+import com.example.onetomany.CarsRepository;
+import com.example.onetomany.Company;
+import com.example.onetomany.CompanyRepository;
 import com.example.onetoone.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -44,22 +48,29 @@ public class App {
 	}
 	private static void  oneToMany (){
 
+		CompanyRepository companyRepository = context.getBean(CompanyRepository.class);
+		CarsRepository carsRepository = context.getBean(CarsRepository.class);
+		/*var companyRepo = context.getBean(Company.class);
+		var carsRepo = context.getBean(Cars.class);*/
+
+		var car1 = new Cars("mod1",4,200);
+		var car2 = new Cars("mod2",5,150);
+		carsRepository.saveAll(List.of(car1, car2));
+
+		Company comp1 = new Company("nam1","cif1", (List<Cars>) car1);
+		companyRepository.save(comp1);
 	}
 	private static void manyToOne (){
-		EdificioRepository edificioRepository = context.getBean(EdificioRepository.class);
+		/*EdificioRepository edificioRepository = context.getBean(EdificioRepository.class);
 		VecinosRepository vecinosRepository = context.getBean(VecinosRepository.class);
 
-		var vecino1 = new Vecinos("vec1","6","A", LocalDate(2000, Month.APRIL,23),"nif1");
-		var vecino2 = new Vecinos("vec2","7","A", LocalDate(19690, Month.NOVEMBER,30),"nif2");
-		var vecino3 = new Vecinos("vec3","2","B",LocalDate(1990,Month.JUNE,22),"nif3");
+		Edificio edificio1 = new Edificio("Edificio1",34,"Portero1");
 
-		vecinosRepository.saveAll(List.of(vecino1,vecino2,vecino3));
+		edificioRepository.saveAll(List.of(edificio1));
 
-		Edificio edificio1 = new Edificio("Edificio1",34,"Portero1",vecino1);
-		Edificio edificio2 = new Edificio("Edificio2",14,"Portero2",vecino2);
+		var vec1 = new Vecinos("name1",6,"A","nif1",LocalDate(List.of(2001, Month.NOVEMBER,12)),edificio1);
 
-		edificioRepository.saveAll(List.of(edificio1,edificio2));
-
+		vecinosRepository.saveAll(List.of(vec1));*/
 	}
 	private static void manyToMany (){
 

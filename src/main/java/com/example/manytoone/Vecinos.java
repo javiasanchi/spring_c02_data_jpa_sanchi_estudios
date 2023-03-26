@@ -15,18 +15,20 @@ public class Vecinos {
     private String puerta;
     private LocalDate fechanac;
     private String nif;
-
+    @ManyToOne
+    private Edificio edificio;
 
 
     public Vecinos() {
     }
 
-    public Vecinos(String name, Integer piso, String puerta, LocalDate fechanac, String nif) {
+    public Vecinos(String name, Integer piso, String puerta, String nif, LocalDate fechanac, Edificio edificio) {
         this.name = name;
         this.piso = piso;
         this.puerta = puerta;
         this.fechanac = fechanac;
         this.nif = nif;
+        this.edificio = edificio;
 
     }
 
@@ -78,7 +80,14 @@ public class Vecinos {
         this.nif = nif;
     }
 
+    public Edificio getEdificio() {
+        return edificio;
+    }
 
+    public Vecinos setEdificio(Edificio edificio) {
+        this.edificio = edificio;
+        return this;
+    }
 
     @Override
     public String toString() {
