@@ -1,9 +1,5 @@
 package com.example;
 
-import com.example.manytoone.Edificio;
-import com.example.manytoone.EdificioRepository;
-import com.example.manytoone.Vecinos;
-import com.example.manytoone.VecinosRepository;
 import com.example.onetomany.Cars;
 import com.example.onetomany.CarsRepository;
 import com.example.onetomany.Company;
@@ -13,8 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.List;
 
 @SpringBootApplication
@@ -50,15 +44,21 @@ public class App {
 
 		CompanyRepository companyRepository = context.getBean(CompanyRepository.class);
 		CarsRepository carsRepository = context.getBean(CarsRepository.class);
-		/*var companyRepo = context.getBean(Company.class);
-		var carsRepo = context.getBean(Cars.class);*/
 
 		var car1 = new Cars("mod1",4,200);
 		var car2 = new Cars("mod2",5,150);
-		carsRepository.saveAll(List.of(car1, car2));
+		var car3 = new Cars("mod3",5,170);
+		carsRepository.saveAll(List.of(car1, car2,car3));
 
-		Company comp1 = new Company("nam1","cif1", (List<Cars>) car1);
+		Company comp1 = new Company("nam1","cif1");
+
+		comp1.getCars(car2).add(car2);
+		comp1.getCars(car3).add(car3);
 		companyRepository.save(comp1);
+		Company comp2 = new Company("nam2","cif2");
+		comp2.getCars(car1).add(car1);
+		companyRepository.save(comp1);
+		companyRepository.save(comp2);
 	}
 	private static void manyToOne (){
 		/*EdificioRepository edificioRepository = context.getBean(EdificioRepository.class);

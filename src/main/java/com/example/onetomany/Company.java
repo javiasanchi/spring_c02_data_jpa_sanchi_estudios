@@ -16,11 +16,10 @@ public class Company {
     private String cif;
     @OneToMany
     private List<Cars> cars = new ArrayList<>();
-
     public Company() {
     }
 
-    public Company(String name, String cif, List<Cars> cars) {
+    public Company(String name, String cif) {
         this.name = name;
         this.cif = cif;
         this.cars = cars;
@@ -53,7 +52,7 @@ public class Company {
         return this;
     }
 
-    public List<Cars> getCars() {
+    public List<Cars> getCars(Cars car1) {
         return cars;
     }
 

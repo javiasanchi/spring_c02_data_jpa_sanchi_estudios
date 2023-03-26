@@ -2,6 +2,8 @@ package com.example.onetomany;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 @Table(name = "cars")
 public class Cars {
@@ -11,7 +13,6 @@ public class Cars {
     private String model;
     private Integer doors;
     private Integer cvp;
-
 
     public Cars() {
     }
