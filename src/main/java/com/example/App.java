@@ -1,5 +1,9 @@
 package com.example;
 
+import com.example.manytomany.Alumnos;
+import com.example.manytomany.AlumnosRepository;
+import com.example.manytomany.Materias;
+import com.example.manytomany.MateriasRepository;
 import com.example.manytoone.Edificio;
 import com.example.manytoone.EdificioRepository;
 import com.example.manytoone.Vecinos;
@@ -13,6 +17,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.List;
 
 @SpringBootApplication
@@ -79,6 +85,22 @@ public class App {
 		vecinosRepository.saveAll(List.of(vec1,vec2,vec3));
 	}
 	private static void manyToMany (){
+		AlumnosRepository alumnosRepository = context.getBean(AlumnosRepository.class);
+		MateriasRepository materiasRepository = context.getBean(MateriasRepository.class);
+
+		var mat1 = new Materias("Física","40");
+		var mat2 = new Materias("Química","30");
+		var mat3 = new Materias("Biología","35");
+		var mat4 = new Materias("Matemáticas","45");
+		materiasRepository.saveAll(List.of(mat1,mat2,mat3,mat4));
+
+		var alum1 = new Alumnos("nom1",LocalDate.of(2002,Month.JANUARY,18),"ident1");
+		alum1.getMaterias().addAll(List.of(mat1,mat2,mat3,mat4));
+
+		var alum2 = new Alumnos("nom2",LocalDate.of(2003,Month.AUGUST,29),"ident2");
+		alum2.getMaterias().addAll(List.of(mat1,mat2,mat4));
+
+		alumnosRepository.saveAll(List.of(alum1, alum2));
 
 
 	}

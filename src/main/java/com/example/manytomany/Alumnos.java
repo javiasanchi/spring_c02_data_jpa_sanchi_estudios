@@ -3,6 +3,8 @@ package com.example.manytomany;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "alumnos")
@@ -13,6 +15,8 @@ public class Alumnos {
     private String nombre;
     private LocalDate edad;
     private String ident;
+    @ManyToMany
+    private List<Materias> materias = new ArrayList<>();
 
     public Alumnos() {
     }
@@ -56,6 +60,15 @@ public class Alumnos {
 
     public Alumnos setIdent(String ident) {
         this.ident = ident;
+        return this;
+    }
+
+    public List<Materias> getMaterias() {
+        return materias;
+    }
+
+    public Alumnos setMaterias(List<Materias> materias) {
+        this.materias = materias;
         return this;
     }
 
