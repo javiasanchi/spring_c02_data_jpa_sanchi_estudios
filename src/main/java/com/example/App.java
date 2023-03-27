@@ -1,5 +1,9 @@
 package com.example;
 
+import com.example.manytoone.Edificio;
+import com.example.manytoone.EdificioRepository;
+import com.example.manytoone.Vecinos;
+import com.example.manytoone.VecinosRepository;
 import com.example.onetomany.Cars;
 import com.example.onetomany.CarsRepository;
 import com.example.onetomany.Company;
@@ -61,18 +65,21 @@ public class App {
 		companyRepository.save(comp2);
 	}
 	private static void manyToOne (){
-		/*EdificioRepository edificioRepository = context.getBean(EdificioRepository.class);
+		EdificioRepository edificioRepository = context.getBean(EdificioRepository.class);
 		VecinosRepository vecinosRepository = context.getBean(VecinosRepository.class);
 
-		Edificio edificio1 = new Edificio("Edificio1",34,"Portero1");
+		Edificio edi1 = new Edificio("edi1",34,"port1");
+		edificioRepository.save(edi1);
+		var edi2 = new Edificio("nomb2",23,"port2");
+		edificioRepository.save(edi2);
 
-		edificioRepository.saveAll(List.of(edificio1));
-
-		var vec1 = new Vecinos("name1",6,"A","nif1",LocalDate(List.of(2001, Month.NOVEMBER,12)),edificio1);
-
-		vecinosRepository.saveAll(List.of(vec1));*/
+		var vec1 = new Vecinos("nom1","nif1",edi1);
+		var vec2 = new Vecinos("nom2","nif2",edi1);
+		var vec3 = new Vecinos("nom3","nif3",edi1);
+		vecinosRepository.saveAll(List.of(vec1,vec2,vec3));
 	}
 	private static void manyToMany (){
+
 
 	}
 

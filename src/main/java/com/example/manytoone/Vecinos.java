@@ -11,9 +11,6 @@ public class Vecinos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private Integer piso;
-    private String puerta;
-    private LocalDate fechanac;
     private String nif;
     @ManyToOne
     private Edificio edificio;
@@ -22,11 +19,8 @@ public class Vecinos {
     public Vecinos() {
     }
 
-    public Vecinos(String name, Integer piso, String puerta, String nif, LocalDate fechanac, Edificio edificio) {
+    public Vecinos(String name, String nif, Edificio edificio) {
         this.name = name;
-        this.piso = piso;
-        this.puerta = puerta;
-        this.fechanac = fechanac;
         this.nif = nif;
         this.edificio = edificio;
 
@@ -48,29 +42,9 @@ public class Vecinos {
         this.name = name;
     }
 
-    public Integer getPiso() {
-        return piso;
-    }
 
-    public void setPiso(Integer piso) {
-        this.piso = piso;
-    }
 
-    public String getPuerta() {
-        return puerta;
-    }
 
-    public void setPuerta(String puerta) {
-        this.puerta = puerta;
-    }
-
-    public LocalDate getFechanac() {
-        return fechanac;
-    }
-
-    public void setFechanac(LocalDate fechanac) {
-        this.fechanac = fechanac;
-    }
 
     public String getNif() {
         return nif;
@@ -94,9 +68,6 @@ public class Vecinos {
         return "Vecinos{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", piso=" + piso +
-                ", puerta='" + puerta + '\'' +
-                ", fechanac=" + fechanac +
                 ", nif='" + nif + '\'' +
                 '}';
     }
